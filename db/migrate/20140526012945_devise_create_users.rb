@@ -1,6 +1,5 @@
 class DeviseCreateUsers < ActiveRecord::Migration
   def change
-    drop_table :users
     
     create_table(:users) do |t|
       ## Customization
