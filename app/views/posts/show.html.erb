@@ -7,13 +7,23 @@
        submitted <%= time_ago_in_words(@post.created_at) %> ago by
        <%= @post.user.name %>
     </small>
-    <div><%= image_tag(post.image.url) if post.image? %></div>
+    <div><%= image_tag(@post.image.url) if @post.image? %></div>
     <p><%= markdown @post.body %></p>
   </div>
   <div class="col-md-4">
     <% if policy(@post).edit? %>  
       <%= link_to "Edit", edit_topic_post_path(@topic,@post), class: 'btn btn-success' %>
     <% end %>
+  </div>
+
+  <div>
+    <%= render partial: "comments/form", locals: { topic: @topic, post: @post, comment: @comment } %>
+  </div>
+
+
+  <div class="col-md-8">
+    <h5>Comments</h5>
+    <%= render partial: "comments/comment", collection: @comments, locals: { topic: @topic, post: @post } %>
   </div>
 </div>
 
