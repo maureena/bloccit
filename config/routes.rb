@@ -4,7 +4,7 @@ Bloccit::Application.routes.draw do
   get "comments/new"
   devise_for :users
 
-  resources :users, only: [:update]
+  resources :users, only: [:show, :update]
 
   resources :topics do
     resources :posts, except: [:index] do
