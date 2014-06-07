@@ -1,5 +1,5 @@
 <div class="media">
-  <%= render partial: 'votes/voter', local: { topic: post.topic, post: post } %>
+  <%= render partial: 'votes/voter', locals: { topic: post.topic, post: post } %>
   <%= link_to [post.topic, post], class: 'pull-left' do %>
     <%= image_tag(post.image.thumb.url) if post.image? %>
   <% end %>
