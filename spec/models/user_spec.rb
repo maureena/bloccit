@@ -26,4 +26,11 @@ describe User do
       expect(users.first.comments_count).to eq(2)
     end
   end
+
+  describe "#role?" do
+    it "should convert user role to string" do
+      u = User.new
+      expect(u.role?(admin)).to eq("admin")
+    end
+  end
 end

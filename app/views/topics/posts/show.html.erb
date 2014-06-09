@@ -3,7 +3,9 @@
 <div class="row">
   <div class="col-md-8">
     <%= render partial: 'votes/voter', locals: { topic: @topic, post: @post } %>
+
     <h1><%= markdown @post.title %></h1>
+    
     <small>
        <%= image_tag(@post.user.avatar.tiny.url) if @post.user.avatar? %>
        submitted <%= time_ago_in_words(@post.created_at) %> ago by
@@ -11,8 +13,8 @@
     </small>
     <div><%= image_tag(@post.image.url) if @post.image? %></div>
     <p><%= markdown @post.body %></p>
-    </div>
-    <div class="col-md-4">
+  </div>
+  <div class="col-md-4">
     <% if policy(@post).edit? %>  
       <%= link_to "Edit", edit_topic_post_path(@topic,@post), class: 'btn btn-success' %>
     <% end %>
@@ -28,19 +30,23 @@
       </div>
       <%= render partial: 'favorites/favorite', locals: { topic: @topic, post: @post } %>
     </div>
-</div>
+  </div>
 
-<div class="row">
-  <div class="cold-md-8">
-    <%= render partial: "comments/form", locals: { topic: @topic, post: @post, comment: @comment } %>
+
+  <div class="row">
+    <div class="col-md-8">
+      <%= render partial: "comments/form", locals: { topic: @topic, post: @post, comment: @comment } %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-8">
+      <hr />
+      <h2 class='js-comments-count'><%= @comments.count %> Comments</h2>
+      <%= render partial: "comments/comment", collection: @comments, locals: { topic: @topic, post: @post } %>
+    </div>
   </div>
 </div>
 
-<div class="row">
-  <div class="col-md-8">
-    <h5>Comments</h5>
-    <%= render partial: "comments/comment", collection: @comments, locals: { topic: @topic, post: @post } %>
-  </div>
-</div>
 
 
