@@ -39,13 +39,11 @@
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-md-8">
       <hr />
       <h2 class='js-comments-count'><%= @comments.count %> Comments</h2>
+      <div class='js-comments'>
       <%= render partial: "comments/comment", collection: @comments, locals: { topic: @topic, post: @post } %>
-    </div>
-  </div>
+      </div>
 </div>
 
 
